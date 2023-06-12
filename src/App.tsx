@@ -1,25 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./index.css";
+import { Outlet } from "react-router-dom";
+import Tab from "./components/Tab";
+import styled from "styled-components";
+
+const Container = styled.div`
+  background-color: #000000;
+  width: 100vw;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  padding-top: 2rem;
+  box-sizing: border-box;
+
+  color: white;
+  flex-direction: column;
+  gap: 2rem;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Tab />
+      <Outlet />
+    </Container>
   );
 }
 
