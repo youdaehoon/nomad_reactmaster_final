@@ -99,7 +99,12 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  overflow: none;
+
+
+
 }
+
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -135,4 +140,17 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+body{
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+body::-webkit-scrollbar{
+  width: 5px;
+}
+body::-webkit-scrollbar-thumb {
+background-color: gray; /* 스크롤바 썸의 배경색 */
+width: 2px;
+border-radius: 025rem; /* 스크롤바 썸의 모서리 반경 */
 }

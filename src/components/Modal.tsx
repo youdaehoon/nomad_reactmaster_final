@@ -28,6 +28,7 @@ background-color: transparent;
 position: relative;
 background-color: black;
 z-index: 9;
+overflow-y: auto;
 
 & .content{
     box-sizing: border-box;
@@ -39,6 +40,13 @@ padding: 1rem;
 
 }
 
+&::-webkit-scrollbar{
+    width: 0.5rem;
+}
+&::-webkit-scrollbar-thumb {
+  background-color: #fff; /* 스크롤바 썸의 배경색 */
+  border-radius: 025rem; /* 스크롤바 썸의 모서리 반경 */
+}
 
 
 
@@ -63,7 +71,6 @@ padding: 1rem;
 
 }
 border-radius: 0.5rem;
-overflow: hidden;
 
 
 `
@@ -88,6 +95,7 @@ mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1.0) 50%, transparent 100%)
 const Title=styled.h2`
     font-size: 1.5rem;
     font-weight: 500;
+  
 `
 const Desc=styled.p`
 margin-top: 2rem;
@@ -100,8 +108,10 @@ font-size: 1rem;
 
 const InfoContainer=styled.div`
     display: flex;
+    padding-top: 1rem;
+    border-top: 1px dashed #fff;
     flex-direction: column;
-
+margin-top: 2rem;
     font-size: 0.8rem;
     
 `
