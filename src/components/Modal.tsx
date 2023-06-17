@@ -4,6 +4,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { IMovieDetail, getMovie, makeBgPath } from '../api'
 import { useLocation, useParams } from 'react-router-dom'
+import { formatNumber } from '../lib'
 
 
 const ModalContainer=styled.div`
@@ -138,10 +139,10 @@ console.log(locattion)
 
         <InfoContainer>
 <span>
-{`Budget : $${data?.budget}`}
+{`Budget : $${data?.budget&& formatNumber(data.budget)}`}
 </span>
 <span>
-{`Revenue : ${data?.revenue}$`}
+{`Revenue : $${data?.revenue&&formatNumber(data.revenue)}`}
 </span>
 <span>
 {`Runtime : ${data?.runtime} minutes`}
