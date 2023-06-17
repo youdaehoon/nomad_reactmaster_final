@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { motion } from 'framer-motion'
-import React from 'react'
+import React, { KeyboardEvent, useEffect } from 'react'
 import styled from 'styled-components'
 import { IMovieDetail, getMovie, makeBgPath } from '../api'
 import { useLocation, useParams } from 'react-router-dom'
@@ -126,9 +126,23 @@ interface IPops{
 const Modal = ({selectdId,setSelectedId}:IPops) => {
     const {data}=useQuery<IMovieDetail>(["selected",selectdId],()=>getMovie(selectdId+""))
     const locattion=useLocation()
-console.log(locattion)
 
-    console.log(data)
+
+
+
+    useEffect(() => {
+        const handleKeyPress = (event:globalThis.KeyboardEvent) => {
+          if (event.key === "Escape") {
+            setSelectedId(-1)         
+         }
+        };
+    
+        document.addEventListener("keydown",(e)=> handleKeyPress(e));
+    
+        return () => {
+            document.removeEventListener("keydown", (e)=> {});
+        };
+      }, []);
   return (
     <ModalContainer onClick={(e)=>{ e.preventDefault();e.stopPropagation();setSelectedId(-1)}}>
     <SelectedCard layoutId={`selected${locattion.pathname+selectdId}`}  onClick={(e)=>{ e.preventDefault();e.stopPropagation()}}>
